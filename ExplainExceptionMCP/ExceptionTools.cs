@@ -78,7 +78,7 @@ public static class ExceptionTools
         [Description("可选工作区根目录。用于读取源码并处理 stack trace 路径与当前 checkout 路径不一致的情况。")] string? workspaceRoot = null,
         [Description("每个命中行之前读取的行数，默认 10，最大 100。")] int before = 10,
         [Description("每个命中行之后读取的行数，默认 10，最大 100。")] int after = 10,
-        [Description("最多读取几个 stack frame 的代码上下文，默认 3，最大 10。")] int maxFrames = 3)
+        [Description("最多读取几个 stack frame 的代码上下文，默认 5，最大 10。")] int maxFrames = 5)
     {
         var parseResult = StackTraceParser.Parse(stack);
         if (!parseResult.Success)
