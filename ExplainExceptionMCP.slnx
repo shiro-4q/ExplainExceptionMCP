@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ExplainExceptionMCP.Tests/ExplainExceptionMCP.Tests.csproj" />
+  <Project Path="ExplainExceptionMCP/ExplainExceptionMCP.csproj" />
+</Solution>
