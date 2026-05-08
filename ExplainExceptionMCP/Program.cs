@@ -27,7 +27,7 @@ internal static class Program
         });
 
         builder.Services
-            .AddMcpServer(options =>
+            .AddMcpServer(options =>// 注册MCP服务，并配置服务器信息和使用的工具。
             {
                 options.ServerInfo = new Implementation
                 {
@@ -41,11 +41,11 @@ internal static class Program
                     使用 GetCodeContext 读取指定源码位置附近的代码上下文。
                     使用 AnalyzeException 将异常和代码上下文组装成分析提示词。
                     使用 ExplainException 执行解析、读取代码和构建提示词的端到端流程。
-                    """;
+                    """;// 服务器说明里可以告诉调用方 LLM 这个 MCP 的功能和使用的工具，帮助它更好地利用这些工具。
             })
-            .WithStdioServerTransport()
-            .WithToolsFromAssembly();
+            .WithStdioServerTransport()// 配置基于 stdio 的 MCP 服务器传输。
+            .WithToolsFromAssembly();// 自动注册当前程序集中的所有 MCP 工具，会自动扫描[McpServerToolType]下面所有标记了[McpServerTool] 的方法。
 
-        await builder.Build().RunAsync();
+        await builder.Build().RunAsync();// 构建Host，启动应用
     }
 }
